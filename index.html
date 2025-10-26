@@ -37,8 +37,8 @@
           Do a one-time <a href="#log-in-to-netlify">login</a> to Netlify on your
           machine
         </li>
+        <li>Prepare your app to <a href="#deploy">deploy</a> to Netlify</li>
         <li><a href="#build">Build</a> a production version of your app</li>
-        <li><a href="#deploy">Deploy</a> your app to Netlify</li>
         <li>
           Learn how to set up a custom domain (<a href="#custom-domain"
             >optional</a
@@ -120,7 +120,7 @@
         Your browser should open to sign in to your Netlify account. Then, click <b>"Authorize"</b>.
       </p>
 
-      <h2 id="deploy">Deploy</h2>
+      <h2 id="deploy">Prepare to Deploy</h2>
 
       <p>
         You'll need to create a <em>netlify.toml</em> file in the root of your project to tell
@@ -153,20 +153,6 @@
         </div>
       </div>
 
-      <p>
-        If you want to choose a custom domain, skip to the  <a href="#custom-domain">next step</a>, otherwise you're ready to deploy. Run the following command in the root folder of your project:
-      </p>
-
-       <div class="shell shadow" id="deploy-script">
-        <div class="code">
-          <p>$</p>
-          <code>npx netlify deploy --dir=dist --prod</code>
-        </div>
-        <div class="copy">
-          <img src="./images/copy.png" alt="copy" />
-        </div>
-      </div>
-
       <h2 id="build">Build A Production Version of Your App</h2>
 
       <p>
@@ -192,7 +178,18 @@
         deploy our app.
       </p>
 
-      <p>If this is your first deployment, Netlify will assign a random URL to the site. You can change this in the next step.</p>
+      <p>If this is your first deployment, Netlify will assign a random URL to the site. If you want to choose a custom domain, skip to the <a href="#custom-domain">next step</a>, otherwise you're ready to deploy. Run the following command in the root folder of your project:
+      </p>
+
+       <div class="shell shadow" id="deploy-script">
+        <div class="code">
+          <p>$</p>
+          <code>npx netlify deploy --dir=dist --prod</code>
+        </div>
+        <div class="copy">
+          <img src="./images/copy.png" alt="copy" />
+        </div>
+      </div>
 
       <h2 id="custom-domain">Setting Up a Custom Domain (optional)</h2>
       <p>

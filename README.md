@@ -8,8 +8,8 @@
 ## Objectives
 
 - Do a one-time [login](#log-in-to-netlify) to Netlify on your machine
+- Prepare your app to [deploy](#deploy) to Netlify
 - [Build](#build-a-production-version-of-your-app) a production version of your app
-- [Deploy](#deploy) your app to Netlify
 - Learn how to set up a custom domain ([optional](#setting-up-a-custom-domain-optional))
 - Create a custom build script ([optional](#creating-a-custom-build-script))
 
@@ -47,18 +47,7 @@ npx netlify login
 Your browser should open to sign in to your Netlify account. Then, click **"Authorize"**.
 
 
-## Build A Production Version of Your App
-
-Now, you need to tell Vite to build a production version of your app. If you intend on using a custom domain, [skip ahead](#custom-domain) to that section. If not, run the following:
-
-```sh
-vite build
-```
-
-Running the `vite build` command creates a production build of our React App contained in a `/dist` folder. Netlify will use this to deploy our app.
-
-
-## Deploy
+## Prepare to Deploy
 
 You'll need to create a `netlify.toml` file in the root of your project to tell Netlify how to work with Vite.
 
@@ -79,13 +68,21 @@ In this file, paste in the following settings:
   status = 200
 ```
 
-If you want to choose a custom domain, skip to the [next step](#setting-up-a-custom-domain-optional), otherwise you're ready to deploy. Run the following command in the root folder of your project:
+## Build A Production Version of Your App
+
+Now, you need to tell Vite to build a production version of your app. If you intend on using a custom domain, [skip ahead](#custom-domain) to that section. If not, run the following:
+
+```sh
+vite build
+```
+
+Running the `vite build` command creates a production build of our React App contained in a `/dist` folder. Netlify will use this to deploy our app.
+
+If this is your first deployment, Netlify will assign a random URL to the site. If you want to choose a custom domain, skip to the [next step](#setting-up-a-custom-domain-optional), otherwise you're ready to deploy. Run the following command in the root folder of your project:
 
 ```sh
 npx netlify deploy --dir=dist --prod
 ```
-
-If this is your first deployment, Netlify will assign a random URL to the site. You can change this in the next step.
 
 
 ## Setting Up a Custom Domain (optional)
