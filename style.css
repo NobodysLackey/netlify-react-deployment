@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --main: #3a3a3a;
+  --hover: #656565;
+  --highlight: #000000;
+  --highlight-two: #6a6a6a;
+  --background: #e6e6e6;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--main);
+  font-family: "Raleway", sans-serif;
+  width: 98vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+kbd {
+  background-color: #fbf3ed;
+  padding: 4px;
+  border: 1px solid var(--main);
+  border-radius: 3px;
+  color: var(--main);
+  font-weight: bold;
+}
+
+kbd:hover {
+  background-color: var(--main);
+  color: #fbf3ed;
+  cursor: default;
+}
+
+main {
+  width: 95vw;
+  margin: 2vh 2vw;
+}
+
+a {
+  text-decoration: none;
+  color: var(--highlight);
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--highlight-two);
+}
+
+h2 {
+  margin-top: 4vh;
+}
+
+hr {
+  border: 2px solid var(--main);
+}
+
+.shadow {
+  -webkit-box-shadow: 0px 5px 8px -4px rgba(0, 0, 0, 0.68);
+  -moz-box-shadow: 0px 5px 8px -4px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 5px 8px -4px rgba(0, 0, 0, 0.68);
+}
+
+.shell {
+  width: 250px;
+  max-width: 90vw;
+  height: 50px;
+  background-color: var(--main);
+  color: #f7e3d6;
+  border: 2px solid #f7e3d6;
+  border-radius: 5px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy {
+  min-height: 25px;
+  min-width: 25px;
+  border: 1px solid var(--hover);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.copy > img {
+  height: 13px;
+  width: 13px;
+}
+
+.code {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#env-block {
+  display: flex;
+  flex-direction: column;
+}
+
+#build-one {
+  width: fit-content;
+}
+
+#build-one div code {
+  padding-right: 10px;
+}
+
+#script-three {
+  display: flex;
+}
+
+#script-three div {
+  height: fit-content;
+}
+
+#not-found {
+  max-width: 50%;
+}
+
+.code-block {
+  max-width: max-content;
+  background-color: var(--main);
+  color: #f7e3d6;
+  border: 2px solid #f7e3d6;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+}
+
+.code-block pre {
+  margin: 8px 0 0 0;
+  padding: 0 10px 0 0;
+}
+
+.script code {
+  padding: 0 10px 0 0;
+}
+
+pre {
+  font-family: monospace;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  background-color: var(--main);
+  /* margin: 0; */
+  color: inherit;
+}
+
+.code > p {
+  display: inline;
+  font-family: monospace;
+  margin-right: 4px;
+  color: white;
+  cursor: default;
+}
+
+.browser {
+  width: max-content;
+  height: 30px;
+  background-color: var(--background);
+  color: var(--main);
+  border: 2px solid var(--main);
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: default;
+}
+
+.image {
+  border: 2px solid var(--main);
+  border-radius: 5px;
+  max-width: 90vw;
+}
+
+.banner {
+  max-width: 90vw;
+}
+
+.gif {
+  width: 600px;
+  border: 2px solid var(--highlight-two);
+  background-color: #000000;
+  padding: 5px;
+}
+
+.logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  max-width: 100vw;
+}
+
+#react {
+  max-width: 20vw;
+}
+
+#vercel {
+  max-width: 20vw;
+}
+
+#vite {
+  max-width: 20vw;
+}

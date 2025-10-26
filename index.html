@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" href="./images/check.png" as="check" />
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>React Vercel Deployment</title>
+  </head>
+
+  <body>
+    <div style="display: none">
+      <img id="preload-check" src="./images/check.png" alt="check" />
+      <img id="preload-copy" src="./images/copy.png" alt="copy" />
+    </div>
+    <main>
+      <center>
+        <img src="./images/banner.png" alt="banner" class="banner" />
+
+        <p>
+          This website will walk you through the steps to deploy a
+          <a href="https://vitejs.dev/" target="_blank">Vite</a>
+          React app with
+          <a href="https://vercel.com/" target="_blank">Vercel</a>. We will walk
+          through all of the necessary steps from start to finish, and even
+          cover how you can choose a custom domain as well.
+        </p>
+
+        <hr />
+      </center>
+
+      <h2>Objectives</h2>
+      <ul>
+        <li>
+          Do a one-time <a href="#log-in-to-vercel">login</a> to Vercel on your
+          machine
+        </li>
+        <li><a href="#deploy">Deploy</a> your app to Vercel</li>
+        <li>
+          Learn how to set up a custom domain (<a href="#custom-domain"
+            >optional</a
+          >)
+        </li>
+        <li>
+          Create a custom build script (<a href="#custom-build">optional</a>)
+        </li>
+      </ul>
+
+      <h2>Is a React App a Static Site?</h2>
+      <p>
+        When we use the term "static", we are referring to the fact that the
+        content of the website will not change unless the files are manually
+        updated. The site does <em>not</em> interact with a database or involve
+        any
+        <a href="https://en.wikipedia.org/wiki/Server-side" target="_blank"
+          >server-side processing</a
+        >. The site will simply display the same information to every user.
+        Typically, static sites are faster and more secure than dynamic sites.
+      </p>
+
+      <p>
+        Technically, a React front-end is considered a static site because it
+        serves pre-built files to the browser, and all necessary data is
+        included within the initial load, meaning it doesn't need to query a
+        database or server for every user request. The dynamic interactions are
+        handled through JavaScript (<a
+          href="https://en.wikipedia.org/wiki/Dynamic_web_page"
+          target="_blank"
+          >client-side</a
+        >) which manipulates the DOM elements directly in the browser, without
+        needing to fetch new pages or data from a server. This results in faster
+        load times and a smoother user experience.
+      </p>
+
+      <p>This also means that we can use Vercel to deploy it!</p>
+
+      <p>
+        Vercel specializes in deploying and hosting these types of sites, and as
+        a result, is extremely light-weight and fast. The feature we love the
+        most is that Vercel is extremely <em>easy to use</em>.
+      </p>
+
+      <h2 id="log-in-to-vercel">Log In to Vercel</h2>
+      <p>
+        First off, we need to do a one-time login to Vercel on our machine. This
+        should only need to be done once.
+      </p>
+
+      <h3>Setting Up Your Vercel Account</h3>
+
+      <p>
+        <b><em>If you have never signed up with Vercel before...</em></b>
+      </p>
+
+      <p>
+        Visit <a href="https://vercel.com/signup">Vercel</a> to sign up for a
+        new account.
+      </p>
+
+      <p>
+        <b><em>After signing up...</em></b>
+      </p>
+
+      <p>
+        Run the following command from <em>any working directory</em> in your
+        terminal:
+      </p>
+
+      <div class="shell shadow" id="login">
+        <div class="code">
+          <p>$</p>
+          <code>npx vercel login</code>
+        </div>
+        <div class="copy">
+          <img src="./images/copy.png" alt="copy" />
+        </div>
+      </div>
+
+      <p>
+        You will be prompted to press <kbd class="shadow">enter</kbd> to open up
+        a browser to sign in to your Vercel account.
+      </p>
+
+      <h2>Vite Build</h2>
+
+      <p>
+        Now, you need to tell Vite to build a production version of your app. If
+        you intend on using a custom domain,
+        <a href="#custom-domain">skip ahead</a> to that section. If not, run the
+        following:
+      </p>
+
+      <div class="shell shadow" id="script-one">
+        <div class="code">
+          <p>$</p>
+          <code>vite build</code>
+        </div>
+        <div class="copy">
+          <img src="./images/copy.png" alt="copy" />
+        </div>
+      </div>
+
+      <p>
+        Running the <b>vite build</b> command creates a production build of our
+        React App contained in a <b>/dist</b> folder. Vercel will use this to
+        deploy our app.
+      </p>
+
+      <h2 id="deploy">Deploy</h2>
+
+      <p>
+        You'll need to create a JSON file in the root of your project to tell
+        Vercel how to work with Vite.
+      </p>
+
+      <div class="shell shadow" id="script-two">
+        <div class="code">
+          <p>$</p>
+          <code>touch vercel.json</code>
+        </div>
+        <div class="copy">
+          <img src="./images/copy.png" alt="copy" />
+        </div>
+      </div>
+
+      <p>In this file, paste in the following settings:</p>
+
+      <div class="code-block shadow" id="script-three">
+        <pre>{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}</pre>
+        <div class="copy">
+          <img src="./images/copy.png" alt="copy" />
+        </div>
+      </div>
+
+      <p>
+        Now, you're ready to deploy. Run the following command in the root folder of your project:
+      </p>
+
+       <div class="shell shadow" id="script-four">
+        <div class="code">
+          <p>$</p>
+          <code>npx vercel --prod --yes</code>
+        </div>
+        <div class="copy">
+          <img src="./images/copy.png" alt="copy" />
+        </div>
+      </div>
+
+      <h2 id="custom-domain">Setting Up a Custom Domain (optional)</h2>
+      <p>
+        We can choose the particular domain you want to use with Vercel. This step is entirely optional.
+      </p>
+
+      <h3>Choose a Domain</h3>
+      <p>
+        First, we'll need to see that the URL you want to use is available. Open
+        a browser window and navigate to any surge domain you'd like.
+      </p>
+
+      <p>The URL should follow this format:</p>
+
+      <div class="browser shadow">
+        <code> https://vercelreactdeployment.vercel.app/ </code>
+      </div>
+
+      <p>If it's available, the URL should show this or something very similar in the browser:</p>
+
+      <img src="./images/not-found.png" alt="not-found" class="image shadow" id="not-found"/>
+
+      <p>
+        This means that no one else has deployed a project to this URL, and that
+        it is available to be used. Remember this URL for the next step.
+      </p>
+
+      <h3 id="custom-build">Creating A Custom Build Script</h3>
+
+      <p>
+        Next, we'll create a "build" script in our <b>package.json</b> that will
+        perform all of the steps we need to run our deployment.
+      </p>
+
+      <p>
+        Add the following script <b><em>in</em></b> your
+        <b>"scripts"</b> section of your <b>package.json</b> file.
+      </p>
+
+      <p>If you already have a "build" script, replace it with this:</p>
+
+      <div class="shell shadow" id="build-one">
+        <div class="code">
+          <code
+            >"build": "vite build && npx vercel --prod --yes --name <VERCEL_URL>"</code
+          >
+        </div>
+        <div class="copy">
+          <img src="./images/copy.png" alt="copy" />
+        </div>
+      </div>
+
+      <p>
+        Obviously replace the <b> <> </b> in the above script with your own
+        information.
+      </p>
+
+      <p>
+        Your <em><b>Vercel URL</b></em> is what will be used as the entry point
+        to your app. This is what people will see, and the one you'll want to
+        put on your portfolio, LinkedIn, etc.
+      </p>
+
+      <p>This script performs the following actions:</p>
+
+      <ol>
+        <li>
+          Runs the <em>vite build</em> command that creates a production build
+          of your React App contained in a <b>/dist</b> folder
+        </li>
+        <li>
+          Runs the <em>vercel</em> command to redeploy your app - pointing to your chosen domain
+        </li>
+      </ol>
+
+      <h2>Re-Deploy</h2>
+
+      <p>
+        Any time you want to deploy, run the custom script you put in your
+        <b>package.json</b> file. Do so from the root of your project:
+      </p>
+
+      <div class="shell shadow" id="build-two">
+        <div class="code">
+          <p>$</p>
+          <code>npm run build</code>
+        </div>
+        <div class="copy">
+          <img src="./images/copy.png" alt="copy" />
+        </div>
+      </div>
+
+      <p>This will run the deployment of our Vite React App to Vercel.</p>
+
+      <h2>Recap</h2>
+      <p>
+        In this walkthrough, you successfully deployed your Vite React app to
+        Vercel.
+      </p>
+
+      <p>
+        Any time you make changes to your project that you want reflected on
+        your deployed version, just commit your changes and then run
+        <b>npm run build</b> once more.
+      </p>
+
+      <h2>Resources</h2>
+      <ul>
+        <li>
+          <a href="https://vitejs.dev/guide/" target="_blank">Vite Docs</a>
+        </li>
+        <li>
+          <a
+            href="https://vercel.com/docs"
+            target="_blank"
+            >Vercel Docs</a
+          >
+        </li>
+        <li>
+          <a href="https://deployit.surge.sh/" target="_blank">Deploy It!</a>
+        </li>
+      </ul>
+      <br />
+      <center>
+        <div class="logos">
+          <a href="https://react.dev/" target="_blank">
+            <img src="./images/react.png" alt="react" id="react" />
+          </a>
+          <a href="https://vercel.com" target="_blank">
+            <img src="./images/vercel.png" alt="vercel" id="vercel" />
+          </a>
+          <a href="https://vitejs.dev/" target="_blank">
+            <img src="./images/vite.png" alt="vite" id="vite" />
+          </a>
+        </div>
+      </center>
+    </main>
+  </body>
+</html>
