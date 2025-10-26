@@ -108,23 +108,23 @@ hr {
   flex-direction: column;
 }
 
-#build-one, #script-four {
+#build-two, #deploy-script {
   width: fit-content;
 }
 
-#script-four div code {
+#deploy-script div code {
   padding-right: 10px;
 }
 
-#build-one div code {
+#build-two div code {
   padding-right: 10px;
 }
 
-#script-three {
+#toml-contents {
   display: flex;
 }
 
-#script-three div {
+#toml-contents div {
   height: fit-content;
 }
 

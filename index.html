@@ -120,31 +120,6 @@
         Your browser should open to sign in to your Netlify account. Then, click <b>"Authorize"</b>.
       </p>
 
-      <h2 id="build">Build A Production Version of Your App</h2>
-
-      <p>
-        Now, you need to tell Vite to build a production version of your app. If
-        you intend on using a custom domain,
-        <a href="#custom-domain">skip ahead</a> to that section. If not, run the
-        following:
-      </p>
-
-      <div class="shell shadow" id="script-one">
-        <div class="code">
-          <p>$</p>
-          <code>vite build</code>
-        </div>
-        <div class="copy">
-          <img src="./images/copy.png" alt="copy" />
-        </div>
-      </div>
-
-      <p>
-        Running the <b>vite build</b> command creates a production build of our
-        React App contained in a <b>/dist</b> folder. Netlify will use this to
-        deploy our app.
-      </p>
-
       <h2 id="deploy">Deploy</h2>
 
       <p>
@@ -152,7 +127,7 @@
         Netlify how to work with Vite.
       </p>
 
-      <div class="shell shadow" id="script-two">
+      <div class="shell shadow" id="toml">
         <div class="code">
           <p>$</p>
           <code>touch netlify.toml</code>
@@ -164,7 +139,7 @@
 
       <p>In this file, paste in the following settings:</p>
 
-      <div class="code-block shadow" id="script-three">
+      <div class="code-block shadow" id="toml-contents">
         <pre>[build]
   command = "npm run build"
   publish = "dist"
@@ -182,7 +157,7 @@
         If you want to choose a custom domain, skip to the  <a href="#custom-domain">next step</a>, otherwise you're ready to deploy. Run the following command in the root folder of your project:
       </p>
 
-       <div class="shell shadow" id="script-four">
+       <div class="shell shadow" id="deploy-script">
         <div class="code">
           <p>$</p>
           <code>npx netlify deploy --dir=dist --prod</code>
@@ -191,6 +166,31 @@
           <img src="./images/copy.png" alt="copy" />
         </div>
       </div>
+
+      <h2 id="build">Build A Production Version of Your App</h2>
+
+      <p>
+        Now, you need to tell Vite to build a production version of your app. If
+        you intend on using a custom domain,
+        <a href="#custom-domain">skip ahead</a> to that section. If not, run the
+        following:
+      </p>
+
+      <div class="shell shadow" id="build-one">
+        <div class="code">
+          <p>$</p>
+          <code>vite build</code>
+        </div>
+        <div class="copy">
+          <img src="./images/copy.png" alt="copy" />
+        </div>
+      </div>
+
+      <p>
+        Running the <b>vite build</b> command creates a production build of our
+        React App contained in a <b>/dist</b> folder. Netlify will use this to
+        deploy our app.
+      </p>
 
       <p>If this is your first deployment, Netlify will assign a random URL to the site. You can change this in the next step.</p>
 
@@ -221,7 +221,7 @@
         This means that no one else has deployed a project to this URL, and that it is available to be used. Add the URL to the following command and run it:
       </p>
 
-      <div class="shell shadow" id="script-five">
+      <div class="shell shadow" id="create">
         <div class="code">
           <p>$</p>
           <code>npx netlify --create-site <NETLIFY-URL></code>
@@ -258,7 +258,7 @@
 
       <p>If you already have a "build" script, replace it with this:</p>
 
-      <div class="shell shadow" id="build-one">
+      <div class="shell shadow" id="build-two">
         <div class="code">
           <code
             >"build": "vite build && npx netlify deploy --dir=dist --prod"</code
@@ -288,7 +288,7 @@
         <b>package.json</b> file. Do so from the root of your project:
       </p>
 
-      <div class="shell shadow" id="build-two">
+      <div class="shell shadow" id="build-three">
         <div class="code">
           <p>$</p>
           <code>npm run build</code>
