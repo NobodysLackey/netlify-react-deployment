@@ -108,8 +108,12 @@ hr {
   flex-direction: column;
 }
 
-#build-one {
+#build-one, #script-four {
   width: fit-content;
+}
+
+#script-four div code {
+  padding-right: 10px;
 }
 
 #build-one div code {
@@ -208,7 +212,7 @@ pre {
   max-width: 20vw;
 }
 
-#vercel {
+#netlify {
   max-width: 20vw;
 }
 

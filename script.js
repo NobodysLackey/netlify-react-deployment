@@ -1,4 +1,4 @@
-let elements = ['login', 'script-one', 'script-two', 'script-three', 'script-four', 'build-one', 'build-two']
+let elements = ['login', 'script-one', 'script-two', 'script-three', 'script-four', 'script-five', 'build-one', 'build-two']
 let copied = false
 let out = true
 

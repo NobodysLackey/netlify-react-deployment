@@ -34,10 +34,11 @@
       <h2>Objectives</h2>
       <ul>
         <li>
-          Do a one-time <a href="#log-in-to-vercel">login</a> to Vercel on your
+          Do a one-time <a href="#log-in-to-netlify">login</a> to Netlify on your
           machine
         </li>
-        <li><a href="#deploy">Deploy</a> your app to Vercel</li>
+        <li><a href="#build">Build</a> a production version of your app</li>
+        <li><a href="#deploy">Deploy</a> your app to Netlify</li>
         <li>
           Learn how to set up a custom domain (<a href="#custom-domain"
             >optional</a
@@ -74,28 +75,25 @@
         load times and a smoother user experience.
       </p>
 
-      <p>This also means that we can use Vercel to deploy it!</p>
+      <p>This also means that we can use Netlify to deploy it!</p>
 
       <p>
-        Vercel specializes in deploying and hosting these types of sites, and as
-        a result, is extremely light-weight and fast. The feature we love the
-        most is that Vercel is extremely <em>easy to use</em>.
+        Netlify has a free tier, and the feature we love the most is that it is extremely <em>easy to use</em>.
       </p>
 
-      <h2 id="log-in-to-vercel">Log In to Vercel</h2>
+      <h2 id="log-in-to-netlify">Log In to Netlify</h2>
       <p>
-        First off, we need to do a one-time login to Vercel on our machine. This
-        should only need to be done once.
+        First off, we need to do a one-time login to Netlify on our machine. This should only need to be done once.
       </p>
 
-      <h3>Setting Up Your Vercel Account</h3>
+      <h3>Setting Up Your Netlify Account</h3>
 
       <p>
-        <b><em>If you have never signed up with Vercel before...</em></b>
+        <b><em>If you have never signed up with Netlify before...</em></b>
       </p>
 
       <p>
-        Visit <a href="https://vercel.com/signup">Vercel</a> to sign up for a
+        Visit <a href="https://app.netlify.com/signup">Netlify</a> to sign up for a
         new account.
       </p>
 
@@ -111,7 +109,7 @@
       <div class="shell shadow" id="login">
         <div class="code">
           <p>$</p>
-          <code>npx vercel login</code>
+          <code>npx netlify login</code>
         </div>
         <div class="copy">
           <img src="./images/copy.png" alt="copy" />
@@ -119,11 +117,10 @@
       </div>
 
       <p>
-        You will be prompted to press <kbd class="shadow">enter</kbd> to open up
-        a browser to sign in to your Vercel account.
+        Your browser should open to sign in to your Netlify account. Then, click <b>"Authorize"</b>.
       </p>
 
-      <h2>Vite Build</h2>
+      <h2 id="build">Build A Production Version of Your App</h2>
 
       <p>
         Now, you need to tell Vite to build a production version of your app. If
@@ -144,21 +141,21 @@
 
       <p>
         Running the <b>vite build</b> command creates a production build of our
-        React App contained in a <b>/dist</b> folder. Vercel will use this to
+        React App contained in a <b>/dist</b> folder. Netlify will use this to
         deploy our app.
       </p>
 
       <h2 id="deploy">Deploy</h2>
 
       <p>
-        You'll need to create a JSON file in the root of your project to tell
-        Vercel how to work with Vite.
+        You'll need to create a <em>netlify.toml</em> file in the root of your project to tell
+        Netlify how to work with Vite.
       </p>
 
       <div class="shell shadow" id="script-two">
         <div class="code">
           <p>$</p>
-          <code>touch vercel.json</code>
+          <code>touch netlify.toml</code>
         </div>
         <div class="copy">
           <img src="./images/copy.png" alt="copy" />
@@ -168,45 +165,52 @@
       <p>In this file, paste in the following settings:</p>
 
       <div class="code-block shadow" id="script-three">
-        <pre>{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
-}</pre>
+        <pre>[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200</pre>
         <div class="copy">
           <img src="./images/copy.png" alt="copy" />
         </div>
       </div>
 
       <p>
-        Now, you're ready to deploy. Run the following command in the root folder of your project:
+        If you want to choose a custom domain, skip to the  <a href="#custom-domain">next step</a>, otherwise you're ready to deploy. Run the following command in the root folder of your project:
       </p>
 
        <div class="shell shadow" id="script-four">
         <div class="code">
           <p>$</p>
-          <code>npx vercel --prod --yes</code>
+          <code>npx netlify deploy --dir=dist --prod</code>
         </div>
         <div class="copy">
           <img src="./images/copy.png" alt="copy" />
         </div>
       </div>
 
+      <p>If this is your first deployment, Netlify will assign a random URL to the site. You can change this in the next step.</p>
+
       <h2 id="custom-domain">Setting Up a Custom Domain (optional)</h2>
       <p>
-        We can choose the particular domain you want to use with Vercel. This step is entirely optional.
+        We can choose the particular domain you want to use with Netlify. This step is entirely optional.
       </p>
+
+      <p>Before you first deploy, you'll create a new "site" on Netlify. But first, we'll choose a domain.</p>
 
       <h3>Choose a Domain</h3>
       <p>
         First, we'll need to see that the URL you want to use is available. Open
-        a browser window and navigate to any surge domain you'd like.
+        a browser window and navigate to any Netlify domain you'd like.
       </p>
 
       <p>The URL should follow this format:</p>
 
       <div class="browser shadow">
-        <code> https://vercelreactdeployment.vercel.app/ </code>
+        <code> https://netlifyreactdeployment.netlify.app/ </code>
       </div>
 
       <p>If it's available, the URL should show this or something very similar in the browser:</p>
@@ -214,15 +218,37 @@
       <img src="./images/not-found.png" alt="not-found" class="image shadow" id="not-found"/>
 
       <p>
-        This means that no one else has deployed a project to this URL, and that
-        it is available to be used. Remember this URL for the next step.
+        This means that no one else has deployed a project to this URL, and that it is available to be used. Add the URL to the following command and run it:
       </p>
+
+      <div class="shell shadow" id="script-five">
+        <div class="code">
+          <p>$</p>
+          <code>npx netlify --create-site <NETLIFY-URL></code>
+        </div>
+        <div class="copy">
+          <img src="./images/copy.png" alt="copy" />
+        </div>
+      </div>
+
+       <p>
+        Obviously replace the <b> <> </b> in the above script with your own
+        information.
+      </p>
+
+      <p>
+        Your <em><b>Netlify URL</b></em> is what will be used as the entry point
+        to your app. This is what people will see, and the one you'll want to
+        put on your portfolio, LinkedIn, etc.
+      </p>
+
+      <p>You will only need to set this once.</p>
 
       <h3 id="custom-build">Creating A Custom Build Script</h3>
 
       <p>
-        Next, we'll create a "build" script in our <b>package.json</b> that will
-        perform all of the steps we need to run our deployment.
+        Next, we'll create a "build" script in your <b>package.json</b> that will
+        perform all of the steps we need to run your deployment.
       </p>
 
       <p>
@@ -235,24 +261,13 @@
       <div class="shell shadow" id="build-one">
         <div class="code">
           <code
-            >"build": "vite build && npx vercel --prod --yes --name <VERCEL_URL>"</code
+            >"build": "vite build && npx netlify deploy --dir=dist --prod"</code
           >
         </div>
         <div class="copy">
           <img src="./images/copy.png" alt="copy" />
         </div>
       </div>
-
-      <p>
-        Obviously replace the <b> <> </b> in the above script with your own
-        information.
-      </p>
-
-      <p>
-        Your <em><b>Vercel URL</b></em> is what will be used as the entry point
-        to your app. This is what people will see, and the one you'll want to
-        put on your portfolio, LinkedIn, etc.
-      </p>
 
       <p>This script performs the following actions:</p>
 
@@ -262,7 +277,7 @@
           of your React App contained in a <b>/dist</b> folder
         </li>
         <li>
-          Runs the <em>vercel</em> command to redeploy your app - pointing to your chosen domain
+          Runs the <em>netlify deploy</em> command to redeploy your app
         </li>
       </ol>
 
@@ -283,12 +298,12 @@
         </div>
       </div>
 
-      <p>This will run the deployment of our Vite React App to Vercel.</p>
+      <p>This will run the deployment of our Vite React App to Netlify.</p>
 
       <h2>Recap</h2>
       <p>
         In this walkthrough, you successfully deployed your Vite React app to
-        Vercel.
+        Netlify.
       </p>
 
       <p>
@@ -304,9 +319,9 @@
         </li>
         <li>
           <a
-            href="https://vercel.com/docs"
+            href="https://docs.netlify.com"
             target="_blank"
-            >Vercel Docs</a
+            >Netlify Docs</a
           >
         </li>
         <li>
@@ -319,8 +334,8 @@
           <a href="https://react.dev/" target="_blank">
             <img src="./images/react.png" alt="react" id="react" />
           </a>
-          <a href="https://vercel.com" target="_blank">
-            <img src="./images/vercel.png" alt="vercel" id="vercel" />
+          <a href="https://www.netlify.com/" target="_blank">
+            <img src="./images/netlify.png" alt="netlify" id="netlify" />
           </a>
           <a href="https://vitejs.dev/" target="_blank">
             <img src="./images/vite.png" alt="vite" id="vite" />

@@ -8,9 +8,8 @@
 ## Objectives
 
 - Do a one-time [login](#log-in-to-netlify) to Netlify on your machine
--
-- [Deploy](#deploy) your app to Netlify
 - [Build](#build-a-production-version-of-your-app) a production version of your app
+- [Deploy](#deploy) your app to Netlify
 - Learn how to set up a custom domain ([optional](#setting-up-a-custom-domain-optional))
 - Create a custom build script ([optional](#creating-a-custom-build-script))
 
@@ -45,7 +44,7 @@ Run the following command from *any working directory* in your terminal:
 npx netlify login
 ```
 
-Your browser should open to sign in to your Netlify account. Then, click "Authorize".
+Your browser should open to sign in to your Netlify account. Then, click **"Authorize"**.
 
 
 ## Build A Production Version of Your App
@@ -93,7 +92,7 @@ If this is your first deployment, Netlify will assign a random URL to the site. 
 
 We can choose the particular domain you want to use with Netlify. This step is entirely optional.
 
-When you first deploy, you'll simply add a `--name` flag to your script. But first, we'll choose a domain.
+Before you first deploy, you'll create a new "site" on Netlify. But first, we'll choose a domain.
 
 
 ### Choose a Domain
@@ -110,10 +109,10 @@ If it's available, the URL should show this or something very similar in the bro
 
 ![not-found](./images/not-found.png)
 
-This means that no one else has deployed a project to this URL, and that it is available to be used. Remember this URL for the next step.
+This means that no one else has deployed a project to this URL, and that it is available to be used. Add the URL to the following command and run it:
 
 ```sh
-npx netlify deploy --create-site <NETLIFY-URL> --dir=dist
+npx netlify --create-site <NETLIFY-URL>
 ```
 
 Obviously replace the **<>** in the above script with your own information.
@@ -125,7 +124,7 @@ You will only need to set this once.
 
 ### Creating A Custom Build Script
 
-Next, we'll create or modify the "build" script in our **package.json** that will perform all of the steps we need to run our deployment.
+Next, we'll create or modify the "build" script in your **package.json** that will perform all of the steps we need to run your deployment.
 
 Add the following script ***in*** your `"scripts"` section of your `package.json` file.
 
@@ -138,7 +137,7 @@ If you already have a "build" script, replace it with this:
 This script performs the following actions:
 
 1. Runs the *vite build* command that creates a production build of your React App contained in a **/dist** folder
-2. Runs the *netlify* command to redeploy your app
+2. Runs the *netlify deploy* command to redeploy your app
 
 
 ## Re-Deploy
@@ -157,6 +156,7 @@ This will run the deployment of our Vite React App to Netlify.
 In this walkthrough, you successfully deployed your Vite React app to Netlify.
 
 Any time you make changes to your project that you want reflected on your deployed version, just commit your changes and then run `npm run build` once more.
+
 
 ## Resources
 
