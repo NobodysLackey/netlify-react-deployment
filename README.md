@@ -1,4 +1,4 @@
-# React Deployment with Vercel
+# React Deployment with Netlify
 
 ![deploy](./images/readme-banner.png)
 
