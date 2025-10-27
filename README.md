@@ -89,7 +89,7 @@ npx netlify deploy --dir=dist --prod
 
 We can choose the particular domain you want to use with Netlify. This step is entirely optional.
 
-Before you first deploy, you'll create a new "site" on Netlify. But first, we'll choose a domain.
+Before you first deploy, you'll create a new **"site"** on Netlify. But first, we'll choose a domain.
 
 
 ### Choose a Domain
@@ -134,12 +134,12 @@ If you already have a "build" script, replace it with this:
 This script performs the following actions:
 
 1. Runs the *vite build* command that creates a production build of your React App contained in a **/dist** folder
-2. Runs the *netlify deploy* command to redeploy your app
+2. Runs the *netlify deploy* command to redeploy your app - pointing to your **/dist** folder
 
 
 ## Re-Deploy
 
-Any time you want to deploy, run the custom script you put in your `package.json` file. Do so from the root of your project:
+Any time you want to re-deploy, run the custom script you put in your `package.json` file. Do so from the root of your project:
 
 ```sh
 npm run build

@@ -184,7 +184,7 @@
        <div class="shell shadow" id="deploy-script">
         <div class="code">
           <p>$</p>
-          <code>npx netlify deploy --dir=dist --prod</code>
+          <code class="pad">npx netlify deploy --dir=dist --prod</code>
         </div>
         <div class="copy">
           <img src="./images/copy.png" alt="copy" />
@@ -196,7 +196,7 @@
         We can choose the particular domain you want to use with Netlify. This step is entirely optional.
       </p>
 
-      <p>Before you first deploy, you'll create a new "site" on Netlify. But first, we'll choose a domain.</p>
+      <p>Before you first deploy, you'll create a new <b>"site"</b> on Netlify. But first, we'll choose a domain.</p>
 
       <h3>Choose a Domain</h3>
       <p>
@@ -221,7 +221,7 @@
       <div class="shell shadow" id="create">
         <div class="code">
           <p>$</p>
-          <code>npx netlify --create-site <NETLIFY-URL></code>
+          <code class="pad"> npx netlify --create-site &lt;NETLIFY-URL&gt; </code>
         </div>
         <div class="copy">
           <img src="./images/copy.png" alt="copy" />
@@ -257,8 +257,7 @@
 
       <div class="shell shadow" id="build-two">
         <div class="code">
-          <code
-            >"build": "vite build && npx netlify deploy --dir=dist --prod"</code
+          <code class="pad">"build": "vite build && npx netlify deploy --dir=dist --prod"</code
           >
         </div>
         <div class="copy">
@@ -274,14 +273,14 @@
           of your React App contained in a <b>/dist</b> folder
         </li>
         <li>
-          Runs the <em>netlify deploy</em> command to redeploy your app
+          Runs the <em>netlify deploy</em> command to redeploy your app - pointing to your <b>/dist</b> folder
         </li>
       </ol>
 
       <h2>Re-Deploy</h2>
 
       <p>
-        Any time you want to deploy, run the custom script you put in your
+        Any time you want to re-deploy, run the custom script you put in your
         <b>package.json</b> file. Do so from the root of your project:
       </p>
 

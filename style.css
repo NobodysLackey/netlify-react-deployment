@@ -108,15 +108,11 @@ hr {
   flex-direction: column;
 }
 
-#build-two, #deploy-script {
+#build-two, #deploy-script, #create {
   width: fit-content;
 }
 
-#deploy-script div code {
-  padding-right: 10px;
-}
-
-#build-two div code {
+.pad {
   padding-right: 10px;
 }
 
